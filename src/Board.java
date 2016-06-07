@@ -3,6 +3,10 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -23,6 +27,8 @@ public class Board extends JPanel
     public Board() {
 
         initBoard();
+
+        addKeyListener(new TAdapter());
     }
 
     private void loadImage() {
@@ -31,11 +37,18 @@ public class Board extends JPanel
         star = ii.getImage();
     }
 
+    private void loadImageLeft() {
+
+        ImageIcon ii = new ImageIcon("mariosmall_left.png");
+        star = ii.getImage();
+    }
+
     private void initBoard() {
 
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
         setDoubleBuffered(true);
+        setFocusable(true);
 
         loadImage();
 
@@ -66,13 +79,49 @@ public class Board extends JPanel
 
     private void cycle() {
 
-        x += 1;
-        y += 1;
+        //x += 1;
+        //y += 1;
 
-        if (y > B_HEIGHT) {
-
+        if (y > B_HEIGHT || y < 0) {
             y = INITIAL_Y;
+        }
+
+        if (x > B_WIDTH || x < 0) {
             x = INITIAL_X;
+        }
+    }
+
+    class TAdapter extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+            int key = e.getKeyCode();
+
+            switch ( key ) {
+                case KeyEvent.VK_UP:
+                    y += -25;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    y += 25;
+                    break;
+                case KeyEvent.VK_LEFT:
+                    loadImageLeft();
+                    x += -25;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    loadImage();
+                    x += 25;
+                    break;
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+            int key = e.getKeyCode();
+
+            //MORE
         }
     }
 
