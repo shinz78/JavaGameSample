@@ -14,15 +14,19 @@ import javax.swing.JPanel;
 public class Board extends JPanel
         implements Runnable {
 
-    private final int B_WIDTH = 750;
-    private final int B_HEIGHT = 750;
+    private final int B_WIDTH = 1280;
+    private final int B_HEIGHT = 960;
     private final int INITIAL_X = 0;
-    private final int INITIAL_Y = 0;
-    private final int DELAY = 5;
+    private final int INITIAL_Y = 700;
+    private final int DELAY = 25;
+    private final int MOVE_INCREMENT = 25;
+    private final int J_HEIGHT = 300;
 
-    private Image star;
+    private Image mario;
+    private Image level;
     private Thread animator;
-    private int x, y;
+    private int x, y, jump_y = 0, orig_y = 0;
+    private boolean jumping = false, falling = false;
 
     public Board() {
 
@@ -31,16 +35,21 @@ public class Board extends JPanel
         addKeyListener(new TAdapter());
     }
 
+    private void loadLevel() {
+        ImageIcon ii = new ImageIcon("mariolevel.png");
+        level = ii.getImage();
+    }
+
     private void loadImage() {
 
         ImageIcon ii = new ImageIcon("mariosmall.png");
-        star = ii.getImage();
+        mario = ii.getImage();
     }
 
     private void loadImageLeft() {
 
         ImageIcon ii = new ImageIcon("mariosmall_left.png");
-        star = ii.getImage();
+        mario = ii.getImage();
     }
 
     private void initBoard() {
@@ -50,6 +59,7 @@ public class Board extends JPanel
         setDoubleBuffered(true);
         setFocusable(true);
 
+        loadLevel();
         loadImage();
 
         x = INITIAL_X;
@@ -68,27 +78,74 @@ public class Board extends JPanel
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        drawStar(g);
+        drawLevel(g);
+        drawMario(g);
     }
 
-    private void drawStar(Graphics g) {
-
-        g.drawImage(star, x, y, this);
+    private void drawLevel(Graphics g) {
+        g.drawImage(level, 0, 0, this);
         Toolkit.getDefaultToolkit().sync();
     }
 
-    private void cycle() {
+    private void drawMario(Graphics g) {
 
-        //x += 1;
-        //y += 1;
+        g.drawImage(mario, x, y, this);
+        Toolkit.getDefaultToolkit().sync();
+    }
 
-        if (y > B_HEIGHT || y < 0) {
-            y = INITIAL_Y;
+    private void animJump() {
+
+        //Move Mario up or down
+        if (jumping) {
+            if (y > jump_y) {
+                //Move up
+                y -= MOVE_INCREMENT;
+            }
+
+            if (y <= jump_y) {
+                //Stop jumping and start falling
+                jumping = false;
+                falling = true;
+            }
         }
 
-        if (x > B_WIDTH || x < 0) {
-            x = INITIAL_X;
+        if (falling) {
+            if (y < orig_y) {
+                //Move down
+                y += MOVE_INCREMENT;
+            }
+
+            if (y >= orig_y) {
+                //Stop falling
+                falling = false;
+            }
         }
+    }
+
+    private void moveMario(int key) {
+
+        switch ( key ) {
+            case KeyEvent.VK_UP:
+                y -= MOVE_INCREMENT;
+                break;
+            case KeyEvent.VK_DOWN:
+                y += MOVE_INCREMENT;
+                break;
+            case KeyEvent.VK_LEFT:
+                loadImageLeft();
+                x -= MOVE_INCREMENT;
+                break;
+            case KeyEvent.VK_RIGHT:
+                loadImage();
+                x += MOVE_INCREMENT;
+                break;
+            case KeyEvent.VK_SPACE:
+                jumping = true;
+                jump_y = y - J_HEIGHT;
+                orig_y = y;
+                break;
+        }
+
     }
 
     class TAdapter extends KeyAdapter {
@@ -98,22 +155,8 @@ public class Board extends JPanel
 
             int key = e.getKeyCode();
 
-            switch ( key ) {
-                case KeyEvent.VK_UP:
-                    y += -25;
-                    break;
-                case KeyEvent.VK_DOWN:
-                    y += 25;
-                    break;
-                case KeyEvent.VK_LEFT:
-                    loadImageLeft();
-                    x += -25;
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    loadImage();
-                    x += 25;
-                    break;
-            }
+            moveMario(key);
+
         }
 
         @Override
@@ -134,8 +177,11 @@ public class Board extends JPanel
 
         while (true) {
 
-            cycle();
             repaint();
+
+            if (jumping || falling) {
+                animJump();
+            }
 
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;

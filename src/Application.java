@@ -15,9 +15,9 @@ public class Application extends JFrame {
 
         add(new Board());
 
-        setSize(1024, 1024);
+        setSize(1280, 960);
 
-        setTitle("Application");
+        setTitle("JavaGameSample");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
