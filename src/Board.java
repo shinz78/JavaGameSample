@@ -3,8 +3,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -17,38 +15,76 @@ public class Board extends JPanel
     private final int B_WIDTH = 1280;
     private final int B_HEIGHT = 960;
     private final int INITIAL_X = 0;
-    private final int INITIAL_Y = 700;
-    private final int DELAY = 25;
+    private final int INITIAL_Y = 690;
+    private final int DELAY = 30;
     private final int MOVE_INCREMENT = 25;
     private final int J_HEIGHT = 300;
+    private final String spriteLevel = "sprites/mariolevel.png";
+    private final String soundJump = "sounds/Mario-jump-sound.mp3";
+    private final String spriteStandingRight = "sprites/standingRight.png";
+    private final String spriteStandingLeft = "sprites/standingLeft.png";
+    private final String spriteWalkingRight = "sprites/walkingRight.png";
+    private final String spriteWalkingLeft = "sprites/walkingLeft.png";
+    private final String spriteJumpingRight = "sprites/jumpingRight.png";
+    private final String spriteJumpingLeft = "sprites/jumpingLeft.png";
 
     private Image mario;
     private Image level;
     private Thread animator;
     private int x, y, jump_y = 0, orig_y = 0;
-    private boolean jumping = false, falling = false;
+    private boolean walking = false, jumping = false, falling = false;
+    private String direction = "right";
 
     public Board() {
 
         initBoard();
 
         addKeyListener(new TAdapter());
+
     }
 
     private void loadLevel() {
-        ImageIcon ii = new ImageIcon("mariolevel.png");
+        ImageIcon ii = new ImageIcon(spriteLevel);
         level = ii.getImage();
     }
 
-    private void loadImage() {
+    private void loadMario() {
 
-        ImageIcon ii = new ImageIcon("mariosmall.png");
-        mario = ii.getImage();
-    }
+        String sprite = "";
 
-    private void loadImageLeft() {
+        if (jumping || falling) {
 
-        ImageIcon ii = new ImageIcon("mariosmall_left.png");
+            switch (direction) {
+                case "left":
+                    sprite = spriteJumpingLeft;
+                    break;
+                case "right":
+                    sprite = spriteJumpingRight;
+                    break;
+            }
+
+            animJump();
+
+        } else {
+            switch (direction) {
+                case "left":
+                    if (walking) {
+                        sprite = spriteWalkingLeft;
+                    } else {
+                        sprite = spriteStandingLeft;
+                    }
+                    break;
+                case "right":
+                    if (walking) {
+                        sprite = spriteWalkingRight;
+                    } else {
+                        sprite = spriteStandingRight;
+                    }
+                    break;
+            }
+        }
+
+        ImageIcon ii = new ImageIcon(sprite);
         mario = ii.getImage();
     }
 
@@ -60,7 +96,7 @@ public class Board extends JPanel
         setFocusable(true);
 
         loadLevel();
-        loadImage();
+        SoundEffect.init();
 
         x = INITIAL_X;
         y = INITIAL_Y;
@@ -126,23 +162,26 @@ public class Board extends JPanel
 
         switch ( key ) {
             case KeyEvent.VK_UP:
-                y -= MOVE_INCREMENT;
+                //y -= MOVE_INCREMENT;
                 break;
             case KeyEvent.VK_DOWN:
-                y += MOVE_INCREMENT;
+                //y += MOVE_INCREMENT;
                 break;
             case KeyEvent.VK_LEFT:
-                loadImageLeft();
+                walking = true;
+                direction = "left";
                 x -= MOVE_INCREMENT;
                 break;
             case KeyEvent.VK_RIGHT:
-                loadImage();
+                walking = true;
+                direction = "right";
                 x += MOVE_INCREMENT;
                 break;
             case KeyEvent.VK_SPACE:
                 jumping = true;
                 jump_y = y - J_HEIGHT;
                 orig_y = y;
+                SoundEffect.JUMP.play();
                 break;
         }
 
@@ -159,12 +198,20 @@ public class Board extends JPanel
 
         }
 
+
         @Override
         public void keyReleased(KeyEvent e) {
 
             int key = e.getKeyCode();
 
-            //MORE
+            switch ( key ) {
+                case KeyEvent.VK_LEFT:
+                    walking = false;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    walking = false;
+                    break;
+            }
         }
     }
 
@@ -177,11 +224,8 @@ public class Board extends JPanel
 
         while (true) {
 
+            loadMario();
             repaint();
-
-            if (jumping || falling) {
-                animJump();
-            }
 
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;

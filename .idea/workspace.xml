@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76754fca-c8db-47a8-9fc8-d62ac2dfc683" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SoundEffect.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mario.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mariolevel.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mariosmall.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mariosmall_left.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JavaGameSample/Board$TAdapter.class" afterPath="$PROJECT_DIR$/out/production/JavaGameSample/Board$TAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/JavaGameSample/Board.class" afterPath="$PROJECT_DIR$/out/production/JavaGameSample/Board.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Board.java" afterPath="$PROJECT_DIR$/src/Board.java" />
     </list>
     <ignored path="JavaGameSample.iws" />
@@ -26,11 +32,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Board.java">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,19 +44,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+            <state relative-caret-position="-2023">
+              <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SoundEffect.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SoundEffect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-68">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2373#2374#0" expanded="true" />
+                <element signature="e#2443#2444#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,8 +90,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
+        <option value="$PROJECT_DIR$/src/SoundEffect.java" />
+        <option value="$PROJECT_DIR$/src/Board.java" />
       </list>
     </option>
   </component>
@@ -100,6 +128,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -135,7 +164,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -455,7 +483,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SoundEffect.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -464,6 +500,26 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -484,17 +540,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/javax/swing/ImageIcon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="184" column="11" selection-start-line="184" selection-start-column="11" selection-end-line="184" selection-end-column="11" />
-          <folding>
-            <element signature="e#5677#5678#0" expanded="false" />
-            <element signature="e#5717#5718#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/awt/Dimension.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-170">
@@ -511,20 +556,99 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Board.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/awt/MediaTracker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        <state relative-caret-position="1700">
+          <caret line="171" column="50" selection-start-line="171" selection-start-column="50" selection-end-line="171" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/javafx-src.zip!/javafx/scene/media/MediaPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="49">
+          <caret line="387" column="6" selection-start-line="387" selection-start-column="6" selection-end-line="387" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/javax/sound/sampled/AudioSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="1137" column="35" selection-start-line="1137" selection-start-column="35" selection-end-line="1137" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/lang/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="676" column="23" selection-start-line="676" selection-start-column="23" selection-end-line="676" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="1070" column="76" selection-start-line="1070" selection-start-column="76" selection-end-line="1070" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Application.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/javax/swing/ImageIcon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        <state relative-caret-position="-1804">
+          <caret line="311" column="41" selection-start-line="311" selection-start-column="41" selection-end-line="311" selection-end-column="41" />
+          <folding>
+            <element signature="e#5677#5678#0" expanded="true" />
+            <element signature="e#5717#5718#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SoundEffect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2373#2374#0" expanded="true" />
+            <element signature="e#2443#2444#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_92/src.zip!/java/awt/Toolkit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="712">
+          <caret line="963" column="26" selection-start-line="963" selection-start-column="26" selection-end-line="963" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2023">
+          <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
