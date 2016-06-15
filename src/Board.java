@@ -14,13 +14,13 @@ public class Board extends JPanel
 
     private final int B_WIDTH = 1280;
     private final int B_HEIGHT = 960;
-    private final int INITIAL_X = 0;
+    private final int INITIAL_X = 150;
     private final int INITIAL_Y = 690;
     private final int DELAY = 30;
     private final int MOVE_INCREMENT = 25;
     private final int J_HEIGHT = 300;
     private final String spriteLevel = "sprites/mariolevel.png";
-    private final String soundJump = "sounds/Mario-jump-sound.mp3";
+    private final String spriteBlocks = "sprites/blockQuestionMark.png";
     private final String spriteStandingRight = "sprites/standingRight.png";
     private final String spriteStandingLeft = "sprites/standingLeft.png";
     private final String spriteWalkingRight = "sprites/walkingRight.png";
@@ -30,6 +30,7 @@ public class Board extends JPanel
 
     private Image mario;
     private Image level;
+    private Image block;
     private Thread animator;
     private int x, y, jump_y = 0, orig_y = 0;
     private boolean walking = false, jumping = false, falling = false;
@@ -46,6 +47,11 @@ public class Board extends JPanel
     private void loadLevel() {
         ImageIcon ii = new ImageIcon(spriteLevel);
         level = ii.getImage();
+    }
+
+    private void loadBlock() {
+        ImageIcon ii = new ImageIcon(spriteBlocks);
+        block = ii.getImage();
     }
 
     private void loadMario() {
@@ -96,6 +102,7 @@ public class Board extends JPanel
         setFocusable(true);
 
         loadLevel();
+        loadBlock();
         SoundEffect.init();
 
         x = INITIAL_X;
@@ -116,6 +123,8 @@ public class Board extends JPanel
 
         drawLevel(g);
         drawMario(g);
+        //drawBlockInstance(g, 730, 500);
+        //drawBlockInstance(g, 800, 500);
     }
 
     private void drawLevel(Graphics g) {
@@ -126,6 +135,12 @@ public class Board extends JPanel
     private void drawMario(Graphics g) {
 
         g.drawImage(mario, x, y, this);
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+    private void drawBlockInstance(Graphics g, int x, int y) {
+
+        g.drawImage(block, x, y, this);
         Toolkit.getDefaultToolkit().sync();
     }
 
@@ -178,10 +193,10 @@ public class Board extends JPanel
                 x += MOVE_INCREMENT;
                 break;
             case KeyEvent.VK_SPACE:
-                jumping = true;
                 jump_y = y - J_HEIGHT;
                 orig_y = y;
-                SoundEffect.JUMP.play();
+                //jumping = true;
+                //SoundEffect.JUMP.play();
                 break;
         }
 
